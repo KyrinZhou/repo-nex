@@ -1,15 +1,15 @@
-'use client'
-import { useState } from 'react'
-import { Upload, Image } from 'antd'
-import { PlusOutlined, DeleteOutlined, HolderOutlined } from '@ant-design/icons'
-import type { UploadFile, UploadProps } from 'antd'
-import type { RcFile } from 'antd/es/upload'
-import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core'
-import { SortableContext, arrayMove, rectSortingStrategy, useSortable } from '@dnd-kit/sortable'
-import { CSS } from '@dnd-kit/utilities'
-import './upload.css'
+"use client"
+import { useState } from "react"
+import { Upload, Image } from "antd"
+import { PlusOutlined, DeleteOutlined, HolderOutlined } from "@ant-design/icons"
+import type { UploadFile, UploadProps } from "antd"
+import type { RcFile } from "antd/es/upload"
+import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from "@dnd-kit/core"
+import { SortableContext, arrayMove, rectSortingStrategy, useSortable } from "@dnd-kit/sortable"
+import { CSS } from "@dnd-kit/utilities"
+import "./upload.css"
 
-export interface ImageUploadProps extends Omit<UploadProps, 'listType'> {
+export interface ImageUploadProps extends Omit<UploadProps, "listType"> {
   maxCount?: number
   maxSize?: number // 单位：MB
   fileList?: UploadFile[]
@@ -20,7 +20,7 @@ const SortableItem = ({
   file,
   isLast,
   hiddenCount,
-  onExpand
+  onExpand,
 }: {
   file: UploadFile
   isLast?: boolean
@@ -30,7 +30,7 @@ const SortableItem = ({
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: file.uid })
   const style = {
     transform: CSS.Transform.toString(transform),
-    transition
+    transition,
   }
   const [isDragging, setIsDragging] = useState(false)
 
@@ -46,13 +46,13 @@ const SortableItem = ({
   }
 
   return (
-    <div ref={setNodeRef} style={style} className={`upload-list-item ${isDragging ? 'dragging' : ''}`}>
+    <div ref={setNodeRef} style={style} className={`upload-list-item ${isDragging ? "dragging" : ""}`}>
       <div className="upload-list-item-info">
         <Image
           src={previewUrl || file.url || file.thumbUrl || file.preview}
           alt={file.name}
-          className={`upload-list-item-image ${isLast ? 'upload-list-expand-image' : ''}`}
-          preview={isLast ? false : { maskClassName: 'hidden' }}
+          className={`upload-list-item-image ${isLast ? "upload-list-expand-image" : ""}`}
+          preview={isLast ? false : { maskClassName: "hidden" }}
           onClick={isLast ? handleClick : undefined}
         />
         {isLast ? (
@@ -106,10 +106,10 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
       : fileList
   const hiddenCount = fileList && fileList.length > visibleCount ? fileList.length - visibleCount : 0
 
-  const handleChange: UploadProps['onChange'] = ({ file, fileList: newFileList }) => {
+  const handleChange: UploadProps["onChange"] = ({ file, fileList: newFileList }) => {
     const updatedFileList = [...(newFileList || [])]
 
-    if (file.status === 'uploading' && file.originFileObj) {
+    if (file.status === "uploading" && file.originFileObj) {
       const previewUrl = URL.createObjectURL(file.originFileObj)
       file.preview = previewUrl
       file.thumbUrl = previewUrl
@@ -126,9 +126,9 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
   }
 
   const beforeUpload = (file: RcFile) => {
-    const isImage = file.type.startsWith('image/')
+    const isImage = file.type.startsWith("image/")
     if (!isImage) {
-      message.error('只能上传图片文件！')
+      message.error("只能上传图片文件！")
       return false
     }
 
@@ -150,8 +150,8 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
       onFileListChange?.(newFileList)
     }
     // 重置所有项的拖拽状态
-    const items = document.querySelectorAll('.upload-list-item')
-    items.forEach((item) => item.classList.remove('dragging'))
+    const items = document.querySelectorAll(".upload-list-item")
+    items.forEach((item) => item.classList.remove("dragging"))
   }
   console.log(fileList)
 
@@ -165,7 +165,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
                 (file.originFileObj && URL.createObjectURL(file.originFileObj)) ||
                 file.url ||
                 file.preview ||
-                file.thumbUrl
+                file.thumbUrl,
             }))}
           >
             <div className="upload-list">

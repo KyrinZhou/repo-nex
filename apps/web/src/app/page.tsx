@@ -1,6 +1,6 @@
-'use client'
+"use client"
 
-import { Bubble } from '@ant-design/x'
+import { Bubble } from "@ant-design/x"
 
 export default function Page() {
   return (
