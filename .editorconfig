@@ -1,0 +1,18 @@
+# 表示是最顶层的配置文件，发现值为true时，才会停止查找.editorconfig文件
+root = true
+
+# 表示使用utf-8编码
+[*] # 表示所有文件适用
+charset = utf-8 # 表示使用utf-8编码
+indent_size = 2 # 表示缩进使用4个空格
+indent_style = tab | space # 表示使用tab或space缩进
+end_of_line = lf | crlf # 表示使用lf或crlf换行
+trim_trailing_whitespace = true # 表示去除行尾的空白字符
+insert_final_newline = true # 表示在文件末尾插入一个新行
+
+
+[*.md]
+max_line_length = off # 表示不限制行长度
+trim_trailing_whitespace = false # 表示去除行尾的空白字符
+
+
