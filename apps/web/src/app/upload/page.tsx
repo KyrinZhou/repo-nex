@@ -1,7 +1,7 @@
-"use client"
-import { ImageUpload } from "@repo/ui"
-import { Button, Form } from "antd"
-import { useState } from "react"
+'use client'
+import { ImageUpload } from '@repo/ui'
+import { Button, Form } from 'antd'
+import { useState } from 'react'
 
 const UploadPage = () => {
   const [form] = Form.useForm()
@@ -12,7 +12,7 @@ const UploadPage = () => {
   }
 
   const onFinsh = (values: any) => {
-    console.log("values", values)
+    console.log('values', values)
   }
   return (
     <div>

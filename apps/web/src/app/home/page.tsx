@@ -1,9 +1,9 @@
-"use client"
+'use client'
 
-import React from "react"
-import { Spin } from "@repo/ui"
-import useQiankun from "../../../hooks/use-qiankun"
-import { merchantApp } from "../../../common/sub-apps"
+import React from 'react'
+import { Spin } from '@repo/ui'
+import useQiankun from '../../../hooks/use-qiankun'
+import { merchantApp } from '../../../common/sub-apps'
 
 const MerchantApp: React.FC = () => {
   const { loading, containerRef } = useQiankun(merchantApp)
